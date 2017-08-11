@@ -1,11 +1,56 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont
 import sys
 
 class MyWindow(QWidget):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.initGUI()
+
+#    def closeEvent(self, event):
+
+#        quit_msg = "Are you sure you want to exit the program? We can really help you."
+#        reply = QMessageBox.question(self, 'Message',
+#                         quit_msg, QMessageBox.Yes, QMessageBox.No)
+
+#        if reply == QMessageBox.Yes:
+#            event.ignore()
+#            choice = QMessageBox.critical(self, 'Oh, come on.',
+#                                         "Don't leave yet. Stay, this way we can help you.")
+#        else:
+#            event.ignore()
+
+    def ehwk(self):
+        choice = QMessageBox.critical(self, 'It\'s too late', #question, information, warning, critical
+                                     "Once Information is brought out, it cannot be returned.")
+
+
+    def popup1(self):
+
+        choice = QMessageBox.question(self, 'Light', #question, information, warning, critical
+                                     "Do you want to log in that your flow is \'light\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if choice == QMessageBox.Yes:
+            self.light.setStyleSheet("""
+                QCheckBox#light::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#light::indicator:unchecked {
+                	image: url(img/mf1_sw.png);
+                }
+                QCheckBox#light::indicator:unchecked:hover {
+                	image: url(img/mf1_sw.png);
+                }
+                QCheckBox#light::indicator:checked {
+                	image: url(img/mf1_sw.png);
+                }
+            """)
+            self.light.clicked.connect(self.ehwk)
+        else:
+            pass
 
     def initGUI(self):
         self.setGeometry(10, 30, 530, 700)
@@ -19,6 +64,9 @@ class MyWindow(QWidget):
 
          }
          """)
+
+# BUTTONS:
+
 
         self.light = QCheckBox(self)
         self.light.resize(90, 90)
@@ -35,11 +83,15 @@ class MyWindow(QWidget):
             	image: url(img/mf1_h.png);
             }
             QCheckBox#light::indicator:checked {
-            	image: url(img/mf1_sw.png);
+            	image: url(img/mf1.png);
             }
         """)
         self.light.move(20, 80)
 
+        #if #light clicked 1st time:
+        self.light.clicked.connect(self.popup1)
+    #    else:
+    #        self.light.clicked.connect(self.ehwk)
 
         self.medium = QCheckBox(self)
         self.medium.resize(90, 90)
@@ -621,6 +673,86 @@ class MyWindow(QWidget):
         """)
         self.disease.move(230, 580)
 
+# LABELS:
+
+        mf_label = QLabel(self)
+        mf_label.setText("MENSTRUATION FLOW")
+        mf_label.setGeometry(20, 72, 200, 15)
+        mf_label.setObjectName("mf")
+        mf_label.setStyleSheet("""
+         QLabel#mf {
+            font-family: Helvetica;
+            font-size: 12px;
+        	color: white;
+            font-weight: bold;
+
+         }
+         """)
+
+        lifest_label = QLabel(self)
+        lifest_label.setText("LIFESTYLE ADVICE")
+        lifest_label.setGeometry(20, 172, 200, 15)
+        lifest_label.setObjectName("lifestyle")
+        lifest_label.setStyleSheet("""
+         QLabel#lifestyle {
+            font-family: Helvetica;
+            font-size: 12px;
+        	color: white;
+            font-weight: bold;
+         }
+         """)
+
+        sex_label = QLabel(self)
+        sex_label.setText("SEX AND SEX DRIVE")
+        sex_label.setGeometry(20, 272, 200, 15)
+        sex_label.setObjectName("sex")
+        sex_label.setStyleSheet("""
+         QLabel#sex {
+            font-family: Helvetica;
+            font-size: 12px;
+        	color: white;
+            font-weight: bold;
+         }
+         """)
+
+        hay_label = QLabel(self)
+        hay_label.setText("HOW ARE YOU?")
+        hay_label.setGeometry(20, 372, 200, 15)
+        hay_label.setObjectName("hay")
+        hay_label.setStyleSheet("""
+         QLabel#hay {
+            font-family: Helvetica;
+            font-size: 12px;
+        	color: white;
+            font-weight: bold;
+         }
+         """)
+
+        log_label = QLabel(self)
+        log_label.setText("LOG SYMPTOMS")
+        log_label.setGeometry(20, 472, 200, 15)
+        log_label.setObjectName("log")
+        log_label.setStyleSheet("""
+         QLabel#log {
+            font-family: Helvetica;
+            font-size: 12px;
+        	color: white;
+            font-weight: bold;
+         }
+         """)
+
+        ot_label = QLabel(self)
+        ot_label.setText("OTHERS")
+        ot_label.setGeometry(20, 572, 200, 15)
+        ot_label.setObjectName("ot")
+        ot_label.setStyleSheet("""
+         QLabel#ot {
+            font-family: Helvetica;
+            font-size: 12px;
+        	color: white;
+            font-weight: bold;
+         }
+         """)
 
         self.show()
 
