@@ -63,21 +63,31 @@ class MySleep(QWidget):
         self.button.move(150, 160)
         self.show()
 
-    def submit(self):
-        pass
+    def submit(self):  #secret thoughts of the app appear on the terminal
+        if self.slider.value() <= 5:
+            print "You should get more sleep. Otherwise, you might get unproductive, which decreases your value as a citizen."
+        elif 8 >= self.slider.value() > 5:
+            print "You sleep enough, that's good."
+        elif 11 >= self.slider.value() > 8:
+            print "Somebody was really the last night, hm?"
+        else:
+            print "Don't you have work to do? If you sleep too much, you end up more sleepy than rested."
+
+        self.button.close()
+        self.text1 = QLineEdit(self)
+        self.text1.setText("Thank you for your submission.")
+        self.text1.setGeometry(58, 160, 157, 20)
+        self.text1.setStyleSheet("""
+         QLineEdit {
+            background-color: Gainsboro;
+         }
+         """)
+        self.text1.show()
 
     def sliderChanged(self):
         newval = self.slider.value()
         self.lcd.display(newval)
 
-#    def rangeChanged(self):
-#        item = self.dropdown.currentText()
-#        if item == "3-5":
-#            self.slider.setRange(3, 5)
-#        elif item == "6-8":
-#            self.slider.setRange(6, 8)
-#        elif item == "9-12":
-#            self.slider.setRange(9, 12)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

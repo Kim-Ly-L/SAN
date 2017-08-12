@@ -63,8 +63,29 @@ class MyWeight(QWidget):
         self.button.move(150, 160)
         self.show()
 
-    def submit(self):
-        pass
+    def submit(self):  #secret thoughts of the app appear on the terminal
+        if self.slider.value() <= 45:
+            print "You are clearly underweight or really small. Latter one would indicate a Napoleon complex. Interesting."
+        elif 60 >= self.slider.value() > 45:
+            print "Your weight is optimal! You make a productive citizen."
+        elif 85 >= self.slider.value() > 60:
+            print "Either you are chubby or tall. Hm. In any case, we could advertise and sell you snacks."
+        elif 100 >= self.slider.value() > 85:
+            print "Oooh, somebody wants Groupons for McDonalds."
+        else:
+            print "Ok, you are heading towards obesity and should be doing some sports. Let's arrange some proper gym ads."
+
+
+        self.button.close()
+        self.text1 = QLineEdit(self)
+        self.text1.setText("Thank you for your submission.")
+        self.text1.setGeometry(58, 160, 157, 20)
+        self.text1.setStyleSheet("""
+         QLineEdit {
+            background-color: Gainsboro;
+         }
+         """)
+        self.text1.show()
 
     def sliderChanged(self):
         newval = self.slider.value()
