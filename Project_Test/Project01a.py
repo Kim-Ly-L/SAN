@@ -7,7 +7,28 @@ import sys
 from weight_window import *
 from hours_window import *
 from pedometer import *
+from sanitary_ad import *
+from SkyMoji1 import *
+from SkyMoji2 import *
+from SkyMoji3 import *
+from SkyMoji4 import *
+from ironman_ad import *
+from travelbox import *
+from calmatives_ad import *
+from diseasebox import *
 
+"""
+def myslot(self):
+    self.clickcounter += 1
+    if self.clickcounter == 1:
+        # do this if the counter is 1
+    elif self.clickcounter == 2:
+        # do this if the counter is 2
+    elif self.clickcounter == 3:
+        # do this if the counter is 3
+    else:
+        self.clickcounter = 0     # reset the counter
+"""
 class MyWindow(QWidget):
     def __init__(self):
         super(MyWindow, self).__init__()
@@ -35,7 +56,7 @@ class MyWindow(QWidget):
     def popup1(self):
         choice = QMessageBox.question(self, 'Light', #question, information, warning, critical
                                      "Do you want to log in that your flow is \'light\'?", QMessageBox.Yes |
-                                     QMessageBox.No, QMessageBox.No)
+                                     QMessageBox.No)
 
         if choice == QMessageBox.Yes:
             self.light.setStyleSheet("""
@@ -57,6 +78,236 @@ class MyWindow(QWidget):
         else:
             pass
 
+    def popup2(self):
+        choice = QMessageBox.question(self, 'Medium', #question, information, warning, critical
+                                     "Do you want to log in that your flow is \'medium\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if choice == QMessageBox.Yes:
+            self.medium.setStyleSheet("""
+                QCheckBox#medium::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#medium::indicator:unchecked {
+                	image: url(img/mf2_sw.png);
+                }
+                QCheckBox#medium::indicator:unchecked:hover {
+                	image: url(img/mf2_sw.png);
+                }
+                QCheckBox#medium::indicator:checked {
+                	image: url(img/mf2_sw.png);
+                }
+            """)
+        else:
+            pass
+
+    def popup3(self):
+        choice = QMessageBox.question(self, 'Heavy', #question, information, warning, critical
+                                     "Do you want to log in that your flow is \'heavy\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if choice == QMessageBox.Yes:
+            self.heavy.setStyleSheet("""
+                QCheckBox#heavy::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#heavy::indicator:unchecked {
+                	image: url(img/mf3_sw.png);
+                }
+                QCheckBox#heavy::indicator:unchecked:hover {
+                	image: url(img/mf3_sw.png);
+                }
+                QCheckBox#heavy::indicator:checked {
+                	image: url(img/mf3_sw.png);
+                }
+            """)
+            self.sanitaryad = Sanitary()
+        else:
+            pass
+
+    def popup4(self):
+        choice = QMessageBox.question(self, 'Normal', #question, information, warning, critical
+                                     "Do you want to log in that you are \'normal\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+        if choice == QMessageBox.Yes:
+            self.normal.setStyleSheet("""
+                QCheckBox#normal::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#normal::indicator:unchecked {
+                	image: url(img/Normal_sw.png);
+                }
+                QCheckBox#normal::indicator:unchecked:hover {
+                	image: url(img/Normal_sw.png);
+                }
+                QCheckBox#normal::indicator:checked {
+                	image: url(img/Normal_sw.png);
+                }
+            """)
+            quit_msg = "YOU NEED TO BE HAPPY."
+            reply = QMessageBox.critical(self, 'Only one answer is valid.',
+                             quit_msg)
+        else:
+            pass
+
+    def popup5(self):
+        choice = QMessageBox.question(self, 'Happy', #question, information, warning, critical
+                                     "Do you want to log in that you are \'happy\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+        if choice == QMessageBox.Yes:
+            self.happy.setStyleSheet("""
+                QCheckBox#happy::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#happy::indicator:unchecked {
+                	image: url(img/Happy_sw.png);
+                }
+                QCheckBox#happy::indicator:unchecked:hover {
+                	image: url(img/Happy_sw.png);
+                }
+                QCheckBox#happy::indicator:checked {
+                	image: url(img/Happy_sw.png);
+                }
+            """)
+            quit_msg = "Great! Keep it up!"
+            reply = QMessageBox.information(self, 'You are productive.',
+                             quit_msg)
+        else:
+            pass
+
+    def popup6(self):
+        choice = QMessageBox.question(self, 'Frisky', #question, information, warning, critical
+                                     "Do you want to log in that you are \'frisky\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+        if choice == QMessageBox.Yes:
+            self.frisky.setStyleSheet("""
+                QCheckBox#frisky::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#frisky::indicator:unchecked {
+                	image: url(img/Frisky_sw.png);
+                }
+                QCheckBox#frisky::indicator:unchecked:hover {
+                	image: url(img/Frisky_sw.png);
+                }
+                QCheckBox#frisky::indicator:checked {
+                	image: url(img/Frisky_sw.png);
+                }
+            """)
+            quit_msg = "Great! Good for you!"
+            reply = QMessageBox.information(self, 'You are productive.',
+                             quit_msg)
+        else:
+            pass
+
+    def popup7(self):
+        choice = QMessageBox.question(self, 'Mood Swings', #question, information, warning, critical
+                                     "Do you want to log in that you are \'mood swings\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+        if choice == QMessageBox.Yes:
+            self.moodswings.setStyleSheet("""
+                QCheckBox#moodswings::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#moodswings::indicator:unchecked {
+                	image: url(img/Mood_swings_sw.png);
+                }
+                QCheckBox#moodswings::indicator:unchecked:hover {
+                	image: url(img/Mood_swings_sw.png);
+                }
+                QCheckBox#moodswings::indicator:checked {
+                	image: url(img/Mood_swings_sw.png);
+                }
+            """)
+            quit_msg = "Get yourself under control. YOU NEED TO BE HAPPY."
+            reply = QMessageBox.critical(self, 'Only one answer is valid.',
+                             quit_msg)
+        else:
+            pass
+
+    def popup8(self):
+        choice = QMessageBox.question(self, 'Angry', #question, information, warning, critical
+                                     "Do you want to log in that you are \'angry\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+        if choice == QMessageBox.Yes:
+            self.angry.setStyleSheet("""
+                QCheckBox#angry::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#angry::indicator:unchecked {
+                	image: url(img/Angry_sw.png);
+                }
+                QCheckBox#angry::indicator:unchecked:hover {
+                	image: url(img/Angry_sw.png);
+                }
+                QCheckBox#angry::indicator:checked {
+                	image: url(img/Angry_sw.png);
+                }
+            """)
+            quit_msg = "YOU NEED TO BE HAPPY."
+            reply = QMessageBox.critical(self, 'Only one answer is valid.',
+                             quit_msg)
+        else:
+            pass
+
+    def popup9(self):
+        choice = QMessageBox.question(self, 'Sad', #question, information, warning, critical
+                                     "Do you want to log in that you are \'sad\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+        if choice == QMessageBox.Yes:
+            self.sad.setStyleSheet("""
+                QCheckBox#sad::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#sad::indicator:unchecked {
+                	image: url(img/Sad_sw.png);
+                }
+                QCheckBox#sad::indicator:unchecked:hover {
+                	image: url(img/Sad_sw.png);
+                }
+                QCheckBox#sad::indicator:checked {
+                	image: url(img/Sad_sw.png);
+                }
+            """)
+            quit_msg = "YOU NEED TO BE HAPPY."
+            reply = QMessageBox.critical(self, 'Only one answer is valid.',
+                             quit_msg)
+        else:
+            pass
+
+    def popup10(self):
+        choice = QMessageBox.question(self, 'Stress', #question, information, warning, critical
+                                     "Do you want to log in that you are \'stressed\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if choice == QMessageBox.Yes:
+            self.stress.setStyleSheet("""
+                QCheckBox#stress::indicator {
+                	width: 60px;
+                	height: 60px;
+                }
+                QCheckBox#stress::indicator:unchecked {
+                	image: url(img/Stress_sw.png);
+                }
+                QCheckBox#stress::indicator:unchecked:hover {
+                	image: url(img/Stress_sw.png);
+                }
+                QCheckBox#stress::indicator:checked {
+                	image: url(img/Stress_sw.png);
+                }
+            """)
+            self.calmatives = Calmative()
+        else:
+            pass
+
     def scaleweight(self):
         self.weighty = MyWeight()
         self.weight.setStyleSheet("""
@@ -74,7 +325,6 @@ class MyWindow(QWidget):
             	image: url(img/weight_sw.png);
             }
         """)
-        #PROBLEM: def submit(self)
 
     def sleephours(self):
         self.sleepy = MySleep()
@@ -93,7 +343,6 @@ class MyWindow(QWidget):
             	image: url(img/sleep_sw.png);
             }
         """)
-        #PROBLEM: def submit(self)
 
     def pedymeter(self):
         self.pedy = MyPedometer()
@@ -112,7 +361,149 @@ class MyWindow(QWidget):
             	image: url(img/steps_sw.png);
             }
         """)
-        #PROBLEM: def submit(self)
+
+    def travelling(self):
+        self.travelling = Travelbox()
+        self.travel.setStyleSheet("""
+            QCheckBox#travel::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#travel::indicator:unchecked {
+            	image: url(img/Travel_sw.png);
+            }
+            QCheckBox#travel::indicator:unchecked:hover {
+            	image: url(img/Travel_sw.png);
+            }
+            QCheckBox#travel::indicator:checked {
+            	image: url(img/Travel_sw.png);
+            }
+        """)
+
+    def illness(self):
+        self.diseaseinj = Diseasebox()
+        self.disease.setStyleSheet("""
+            QCheckBox#disease::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#disease::indicator:unchecked {
+            	image: url(img/disease_sw.png);
+            }
+            QCheckBox#disease::indicator:unchecked:hover {
+            	image: url(img/disease_sw.png);
+            }
+            QCheckBox#disease::indicator:checked {
+            	image: url(img/disease_sw.png);
+            }
+        """)
+
+
+    def skymoji1(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
+        filepath = "img/speechless_anim@2x.png"
+        self.mywidget1 = SkyMoji1(filepath)
+        self.mywidget1.setGeometry(50, 50, 350, 350)
+        self.mywidget1.setWindowTitle("You logged in: \'No Sex\'")
+        self.mywidget1.show()
+        self.nosex.setStyleSheet("""
+            QCheckBox#nosex::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#nosex::indicator:unchecked {
+            	image: url(img/no_sex_sw.png);
+            }
+            QCheckBox#nosex::indicator:unchecked:hover {
+            	image: url(img/no_sex_sw.png);
+            }
+            QCheckBox#nosex::indicator:checked {
+            	image: url(img/no_sex_sw.png);
+            }
+        """)
+
+    def skymoji2(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
+        filepath = "img/sun_anim@2x.png"
+        self.mywidget2 = SkyMoji2(filepath)
+        self.mywidget2.setGeometry(50, 50, 350, 350)
+        self.mywidget2.setWindowTitle("You logged in: \'Protected Sex\'")
+        self.mywidget2.show()
+        self.protected.setStyleSheet("""
+            QCheckBox#protected::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#protected::indicator:unchecked {
+            	image: url(img/protected_sex_sw.png);
+            }
+            QCheckBox#protected::indicator:unchecked:hover {
+            	image: url(img/protected_sex_sw.png);
+            }
+            QCheckBox#protected::indicator:checked {
+            	image: url(img/protected_sex_sw.png);
+            }
+        """)
+
+    def skymoji3(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
+        filepath = "img/shake_anim@2x.png"
+        self.mywidget3 = SkyMoji3(filepath)
+        self.mywidget3.setGeometry(50, 50, 350, 350)
+        self.mywidget3.setWindowTitle("You logged in: \'Unprotected Sex\'")
+        self.mywidget3.show()
+        self.unprotected.setStyleSheet("""
+            QCheckBox#unprotected::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#unprotected::indicator:unchecked {
+            	image: url(img/unprotected_sex_sw.png);
+            }
+            QCheckBox#unprotected::indicator:unchecked:hover {
+            	image: url(img/unprotected_sex_sw.png);
+            }
+            QCheckBox#unprotected::indicator:checked {
+            	image: url(img/unprotected_sex_sw.png);
+            }
+        """)
+
+    def skymoji4(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
+        filepath = "img/smirk_anim@2x.png"
+        self.mywidget4 = SkyMoji4(filepath)
+        self.mywidget4.setGeometry(50, 50, 350, 350)
+        self.mywidget4.setWindowTitle("You logged in: \'High Sex Drive\'")
+        self.mywidget4.show()
+        self.high.setStyleSheet("""
+            QCheckBox#high::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#high::indicator:unchecked {
+            	image: url(img/high_sex_sw.png);
+            }
+            QCheckBox#high::indicator:unchecked:hover {
+            	image: url(img/high_sex_sw.png);
+            }
+            QCheckBox#high::indicator:checked {
+            	image: url(img/high_sex_sw.png);
+            }
+        """)
+
+    def ironman_ad(self):
+        self.ironman = Ironman()
+        self.masturbation.setStyleSheet("""
+            QCheckBox#masturbation::indicator {
+            	width: 60px;
+            	height: 60px;
+            }
+            QCheckBox#masturbation::indicator:unchecked {
+            	image: url(img/Masturbation_sw.png);
+            }
+            QCheckBox#masturbation::indicator:unchecked:hover {
+            	image: url(img/Masturbation_sw.png);
+            }
+            QCheckBox#masturbation::indicator:checked {
+            	image: url(img/Masturbation_sw.png);
+            }
+        """)
 
 #    def mediaplayer(self):
 #        self.mediaplayer = QMediaPlayer(self)
@@ -124,7 +515,7 @@ class MyWindow(QWidget):
 
 
     def initGUI(self):
-        self.setGeometry(10, 30, 530, 700)
+        self.setGeometry(400, 30, 530, 700)
         self.setWindowTitle("Flo Period Tracker")
         self.setObjectName("main")
         self.setStyleSheet("""
@@ -158,7 +549,6 @@ class MyWindow(QWidget):
             }
         """)
         self.light.move(20, 80)
-
         self.light.clicked.connect(self.popup1)
 
 
@@ -177,10 +567,11 @@ class MyWindow(QWidget):
             	image: url(img/mf2_h.png);
             }
             QCheckBox#medium::indicator:checked {
-            	image: url(img/mf2_sw.png);
+            	image: url(img/mf2.png);
             }
         """)
         self.medium.move(90, 80)
+        self.medium.clicked.connect(self.popup2)
 
         self.heavy = QCheckBox(self)
         self.heavy.resize(90, 90)
@@ -197,10 +588,11 @@ class MyWindow(QWidget):
             	image: url(img/mf3_h.png);
             }
             QCheckBox#heavy::indicator:checked {
-            	image: url(img/mf3_sw.png);
+            	image: url(img/mf3.png);
             }
         """)
         self.heavy.move(160, 80)
+        self.heavy.clicked.connect(self.popup3)
 
         self.weight = QCheckBox(self)
         self.weight.resize(90, 90)
@@ -307,6 +699,7 @@ class MyWindow(QWidget):
             }
         """)
         self.nosex.move(20, 280)
+        self.nosex.clicked.connect(self.skymoji1)
 
         self.protected = QCheckBox(self)
         self.protected.resize(90, 90)
@@ -327,6 +720,7 @@ class MyWindow(QWidget):
             }
         """)
         self.protected.move(90, 280)
+        self.protected.clicked.connect(self.skymoji2)
 
         self.unprotected = QCheckBox(self)
         self.unprotected.resize(90, 90)
@@ -347,6 +741,7 @@ class MyWindow(QWidget):
             }
         """)
         self.unprotected.move(160, 280)
+        self.unprotected.clicked.connect(self.skymoji3)
 
         self.high = QCheckBox(self)
         self.high.resize(90, 90)
@@ -367,26 +762,7 @@ class MyWindow(QWidget):
             }
         """)
         self.high.move(230, 280)
-
-        self.unprotected = QCheckBox(self)
-        self.unprotected.resize(90, 90)
-        self.unprotected.setObjectName("unprotected")
-        self.unprotected.setStyleSheet("""
-            QCheckBox#unprotected::indicator {
-            	width: 60px;
-            	height: 60px;
-            }
-            QCheckBox#unprotected::indicator:unchecked {
-            	image: url(img/unprotected_sex.png);
-            }
-            QCheckBox#unprotected::indicator:unchecked:hover {
-            	image: url(img/unprotected_sex_h.png);
-            }
-            QCheckBox#unprotected::indicator:checked {
-            	image: url(img/unprotected_sex_sw.png);
-            }
-        """)
-        self.unprotected.move(160, 280)
+        self.high.clicked.connect(self.skymoji4)
 
         self.masturbation = QCheckBox(self)
         self.masturbation.resize(90, 90)
@@ -407,6 +783,7 @@ class MyWindow(QWidget):
             }
         """)
         self.masturbation.move(300, 280)
+        self.masturbation.clicked.connect(self.ironman_ad)
 
         self.normal = QCheckBox(self)
         self.normal.resize(90, 90)
@@ -423,10 +800,11 @@ class MyWindow(QWidget):
             	image: url(img/Normal_h.png);
             }
             QCheckBox#normal::indicator:checked {
-            	image: url(img/Normal_sw.png);
+            	image: url(img/Normal.png);
             }
         """)
         self.normal.move(20, 380)
+        self.normal.clicked.connect(self.popup4)
 
         self.happy = QCheckBox(self)
         self.happy.resize(90, 90)
@@ -443,10 +821,11 @@ class MyWindow(QWidget):
             	image: url(img/Happy_h.png);
             }
             QCheckBox#happy::indicator:checked {
-            	image: url(img/Happy_sw.png);
+            	image: url(img/Happy.png);
             }
         """)
         self.happy.move(90, 380)
+        self.happy.clicked.connect(self.popup5)
 
         self.frisky = QCheckBox(self)
         self.frisky.resize(90, 90)
@@ -463,10 +842,11 @@ class MyWindow(QWidget):
             	image: url(img/Frisky_h.png);
             }
             QCheckBox#frisky::indicator:checked {
-            	image: url(img/Frisky_sw.png);
+            	image: url(img/Frisky.png);
             }
         """)
         self.frisky.move(160, 380)
+        self.frisky.clicked.connect(self.popup6)
 
         self.moodswings = QCheckBox(self)
         self.moodswings.resize(90, 90)
@@ -483,10 +863,11 @@ class MyWindow(QWidget):
             	image: url(img/Mood_swings_h.png);
             }
             QCheckBox#moodswings::indicator:checked {
-            	image: url(img/Mood_swings_sw.png);
+            	image: url(img/Mood_swings.png);
             }
         """)
         self.moodswings.move(230, 380)
+        self.moodswings.clicked.connect(self.popup7)
 
         self.angry = QCheckBox(self)
         self.angry.resize(90, 90)
@@ -503,10 +884,11 @@ class MyWindow(QWidget):
             	image: url(img/Angry_h.png);
             }
             QCheckBox#angry::indicator:checked {
-            	image: url(img/Angry_sw.png);
+            	image: url(img/Angry.png);
             }
         """)
         self.angry.move(300, 380)
+        self.angry.clicked.connect(self.popup8)
 
         self.sad = QCheckBox(self)
         self.sad.resize(90, 90)
@@ -523,10 +905,11 @@ class MyWindow(QWidget):
             	image: url(img/Sad_h.png);
             }
             QCheckBox#sad::indicator:checked {
-            	image: url(img/Sad_sw.png);
+            	image: url(img/Sad.png);
             }
         """)
         self.sad.move(370, 380)
+        self.sad.clicked.connect(self.popup9)
 
         self.fine = QCheckBox(self)
         self.fine.resize(90, 90)
@@ -687,6 +1070,7 @@ class MyWindow(QWidget):
             }
         """)
         self.travel.move(20, 580)
+        self.travel.clicked.connect(self.travelling)
 
         self.stress = QCheckBox(self)
         self.stress.resize(90, 90)
@@ -703,10 +1087,11 @@ class MyWindow(QWidget):
             	image: url(img/Stress_h.png);
             }
             QCheckBox#stress::indicator:checked {
-            	image: url(img/Stress_sw.png);
+            	image: url(img/Stress.png);
             }
         """)
         self.stress.move(90, 580)
+        self.stress.clicked.connect(self.popup10)
 
         self.alcohol = QCheckBox(self)
         self.alcohol.resize(90, 90)
@@ -747,6 +1132,7 @@ class MyWindow(QWidget):
             }
         """)
         self.disease.move(230, 580)
+        self.disease.clicked.connect(self.illness)
 
 # LABELS:
 

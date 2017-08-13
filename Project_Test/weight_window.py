@@ -1,12 +1,3 @@
-"""
-A slightly more interesting example of user interaction.
-
-A window is created with a LCD display, slider, dropdown menu, button and some labels.
-The slider can be used to change the x position of the window, which is displayed on
-the LCD display. Different ranges for the slider can be chosen.
-
-"""
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
@@ -65,16 +56,30 @@ class MyWeight(QWidget):
 
     def submit(self):  #secret thoughts of the app appear on the terminal
         if self.slider.value() <= 45:
-            print "You are clearly underweight or really small. Latter one would indicate a Napoleon complex. Interesting."
+            print "...You are clearly underweight or really small. Latter one would indicate a Napoleon complex. Interesting."
+            quit_msg = "Warning: You could be underweight."
+            reply = QMessageBox.warning(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 60 >= self.slider.value() > 45:
-            print "Your weight is optimal! You make a productive citizen."
+            print "...Apparently, our applied biopolitics on you were successful."
+            quit_msg = "Your weight is optimal."
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 85 >= self.slider.value() > 60:
-            print "Either you are chubby or tall. Hm. In any case, we could advertise and sell you snacks."
+            print "...Either you are chubby or tall. Hm. In any case, we could advertise and sell you snacks."
+            quit_msg = "Depending on your height, you might need to take care of your weight as you could be already overweight."
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 100 >= self.slider.value() > 85:
-            print "Oooh, somebody wants Groupons for McDonalds."
+            print "...Oooh, somebody wants Groupons for McDonalds."
+            quit_msg = "Depending on your height, you must take care of your weight as you could be already overweight."
+            reply = QMessageBox.warning(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         else:
-            print "Ok, you are heading towards obesity and should be doing some sports. Let's arrange some proper gym ads."
-
+            print "...Let's arrange some proper gym ads. This is getting out of our control."
+            quit_msg = "Warning: You are heading towards obesity and should do some sports."
+            reply = QMessageBox.warning(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
 
         self.button.close()
         self.text1 = QLineEdit(self)

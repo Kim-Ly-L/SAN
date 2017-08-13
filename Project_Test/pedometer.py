@@ -1,12 +1,3 @@
-"""
-A slightly more interesting example of user interaction.
-
-A window is created with a LCD display, slider, dropdown menu, button and some labels.
-The slider can be used to change the x position of the window, which is displayed on
-the LCD display. Different ranges for the slider can be chosen.
-
-"""
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
@@ -18,8 +9,8 @@ class MyPedometer(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setFixedWidth(300)  #U SHALL NOT RESIZE ME!!!!!!
-        self.setFixedHeight(200) #RHHHHHAAAAWWWW
+        self.setFixedWidth(300)
+        self.setFixedHeight(200)
         self.move(20,20)
         self.setWindowTitle('Pedometer')
         self.setObjectName("main")
@@ -53,7 +44,7 @@ class MyPedometer(QWidget):
         label_range = QLabel(self)
         label_range.setText("How often do you go for a walk? ")
         self.dropdown = QComboBox(self)
-        self.dropdown.addItems(["Never.", "1-2 days/week", "3-5 days/week", "Every day!"])
+        self.dropdown.addItems(["Not very often.", "1-2 days/week", "3-5 days/week", "Every day!"])
 #        self.dropdown.currentIndexChanged.connect(self.rangeChanged)
         label_range.move(10, 140)
         self.dropdown.move(180, 135)
@@ -65,18 +56,35 @@ class MyPedometer(QWidget):
 
     def submit(self):  #secret thoughts of the app appear on the terminal
         if self.slider.value() <= 1:
-            print "You are not sportive enough and thus, no productive citizen. "
+            print "...You are not sportive enough and thus, no productive citizen. "
+            quit_msg = "Warning: It is unhealthy to stay at home all day long."
+            reply = QMessageBox.warning(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 3 >= self.slider.value() > 1:
-            print "Ok."
+            print "...Let's apply some biopolitics in form of advice."
+            quit_msg = "Tip: Going more often for a walk can increase your health and looks."
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 6 >= self.slider.value() > 3:
-            print "That's a fair amount."
+            print "...That's a fair amount."
+            quit_msg = "Thumbs up!"
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 12 >= self.slider.value() > 6:
-            print "Looks like somebody is trying to get more sportive. Maybe we can help you to stay motivated with the proper products."
+            print "...Looks like somebody is trying to get more sportive. Maybe we can help you to stay motivated with the proper ads."
+            quit_msg = "Tip: The proper products and the right gym can increase your success in sports!"
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 30 >= self.slider.value() > 12:
             print "Wow! Trying to do a marathon or practicing for hiking? Some ads for outdoor sports and diet plans might help."
+            quit_msg = "Are you practicing for any special occasion?"
+            reply = QMessageBox.question(self, 'Notification',
+                             quit_msg, QMessageBox.Yes, QMessageBox.No)
         else:
-            print "Ok, that's extraordinary. Maybe you are a potential candidate for bigger events and responsibilities like the Federal Armed Forces."
-
+            print "Maybe you are a potential candidate for bigger events and responsibilities like the Federal Armed Forces."
+            quit_msg = "Amazing! But make sure to get some rest."
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
 
         self.button.close()
         self.text1 = QLineEdit(self)

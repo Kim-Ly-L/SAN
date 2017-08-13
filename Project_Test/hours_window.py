@@ -1,12 +1,3 @@
-"""
-A slightly more interesting example of user interaction.
-
-A window is created with a LCD display, slider, dropdown menu, button and some labels.
-The slider can be used to change the x position of the window, which is displayed on
-the LCD display. Different ranges for the slider can be chosen.
-
-"""
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
@@ -18,8 +9,8 @@ class MySleep(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setFixedWidth(300)  #U SHALL NOT RESIZE ME!!!!!!
-        self.setFixedHeight(200) #RHHHHHAAAAWWWW
+        self.setFixedWidth(300)
+        self.setFixedHeight(200)
         self.move(20,20)
         self.setWindowTitle('SLEEP')
         self.setObjectName("main")
@@ -65,13 +56,25 @@ class MySleep(QWidget):
 
     def submit(self):  #secret thoughts of the app appear on the terminal
         if self.slider.value() <= 5:
-            print "You should get more sleep. Otherwise, you might get unproductive, which decreases your value as a citizen."
+            print "...Otherwise, you might get unproductive, which decreases your value as a citizen."
+            quit_msg = "You should get more sleep."
+            reply = QMessageBox.warning(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 8 >= self.slider.value() > 5:
-            print "You sleep enough, that's good."
+            print "...Apparently, our applied biopolitics on you were successful."
+            quit_msg = "You sleep enough, that's good."
+            reply = QMessageBox.information(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         elif 11 >= self.slider.value() > 8:
-            print "Somebody was really the last night, hm?"
+            print "...Sleeping too long decreases your productivity."
+            quit_msg = "Somebody was really tired last night, hm?"
+            reply = QMessageBox.question(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
         else:
-            print "Don't you have work to do? If you sleep too much, you end up more sleepy than rested."
+            print "...Don't you have work to do? If you sleep too much, you end up more sleepy than rested."
+            quit_msg = "The optimal sleep range is 6-8 hours."
+            reply = QMessageBox.warning(self, 'Notification',
+                             quit_msg, QMessageBox.Yes)
 
         self.button.close()
         self.text1 = QLineEdit(self)
