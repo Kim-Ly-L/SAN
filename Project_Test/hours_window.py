@@ -66,7 +66,7 @@ class MySleep(QWidget):
             reply = QMessageBox.information(self, 'Notification',
                              quit_msg, QMessageBox.Yes)
         elif 11 >= self.slider.value() > 8:
-            print "...Sleeping too long decreases your productivity."
+            print "...Sleeping too much decreases your productivity."
             quit_msg = "Somebody was really tired last night, hm?"
             reply = QMessageBox.question(self, 'Notification',
                              quit_msg, QMessageBox.Yes)

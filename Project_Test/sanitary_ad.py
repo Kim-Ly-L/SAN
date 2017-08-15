@@ -13,12 +13,7 @@ class Sanitary(QWidget):
         self.setFixedHeight(420)
         self.move(100,100)
         self.setWindowTitle('Advertisement')
-#        self.setObjectName("main")
-#        self.setStyleSheet("""
-#         QWidget#main {
-#        	background-image: url(img/always.png);
-#         }
-#         """)
+
         label = QLabel(self)
         pixmap = QPixmap('img/always.png')
         label.setPixmap(pixmap)

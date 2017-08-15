@@ -3,28 +3,29 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont, QIcon, QPixmap
 import sys
 
-class Ironman(QWidget):
+class Alcohol(QWidget):
     def __init__(self):
-        super(Ironman, self).__init__()
+        super(Alcohol, self).__init__()
         self.initUI()
 
     def initUI(self):
-        self.setFixedWidth(280)
-        self.setFixedHeight(380)
+        self.setFixedWidth(600)
+        self.setFixedHeight(520)
         self.move(100,100)
-        self.setWindowTitle('Advertisement')
+        self.setWindowTitle('Information')
 
         label = QLabel(self)
-        pixmap = QPixmap('img/iron_ad.png')
+        pixmap = QPixmap('img/Alcohol_diagram.png')
         label.setPixmap(pixmap)
         self.show()
 
     def closeEvent(self, event):
-        quit_msg = "TIP: Limited Edition only for a short time. BUY IT."
-        reply = QMessageBox.information(self, 'You logged in \'Masturbation\'',
+
+        quit_msg = "Don't drink. It makes you become unproductive, which decreases your optimization potential."
+        reply = QMessageBox.critical(self, 'Don\'t drink!',
                          quit_msg, QMessageBox.Yes)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ironman = Ironman()
+    alc_info = Alcohol()
     sys.exit(app.exec_())

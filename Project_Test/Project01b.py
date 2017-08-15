@@ -16,14 +16,19 @@ from ironman_ad import *
 from travelbox import *
 from calmatives_ad import *
 from diseasebox import *
-from drinking_info import *
-from cramps_ad import *
-from breastholder_ad import *
-from headache_ad import *
-from fatigue_ad import *
-from cravings_ad import *
-from bloating_ad import *
 
+"""
+def myslot(self):
+    self.clickcounter += 1
+    if self.clickcounter == 1:
+        # do this if the counter is 1
+    elif self.clickcounter == 2:
+        # do this if the counter is 2
+    elif self.clickcounter == 3:
+        # do this if the counter is 3
+    else:
+        self.clickcounter = 0     # reset the counter
+"""
 class MyWindow(QWidget):
     def __init__(self):
         super(MyWindow, self).__init__()
@@ -43,7 +48,7 @@ class MyWindow(QWidget):
 #            event.ignore()
 
     def ehwk(self):
-        choice = QMessageBox.critical(self, 'You already logged in your data.', #question, information, warning, critical
+        choice = QMessageBox.critical(self, 'It\'s too late', #question, information, warning, critical
                                      "Once Information is brought out, it cannot be returned.")
 
 
@@ -69,7 +74,11 @@ class MyWindow(QWidget):
                 	image: url(img/mf1_sw.png);
                 }
             """)
-            self.light.clicked.disconnect(self.popup1)
+            self.light.clickcounter += 1
+        else:
+            pass
+
+        if self.light.clickcounter > 1:
             self.light.clicked.connect(self.ehwk)
         else:
             pass
@@ -77,7 +86,7 @@ class MyWindow(QWidget):
     def popup2(self):
         choice = QMessageBox.question(self, 'Medium', #question, information, warning, critical
                                      "Do you want to log in that your flow is \'medium\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
 
         if choice == QMessageBox.Yes:
             self.medium.setStyleSheet("""
@@ -95,15 +104,13 @@ class MyWindow(QWidget):
                 	image: url(img/mf2_sw.png);
                 }
             """)
-            self.medium.clicked.disconnect(self.popup2)
-            self.medium.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup3(self):
         choice = QMessageBox.question(self, 'Heavy', #question, information, warning, critical
                                      "Do you want to log in that your flow is \'heavy\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
 
         if choice == QMessageBox.Yes:
             self.heavy.setStyleSheet("""
@@ -122,15 +129,13 @@ class MyWindow(QWidget):
                 }
             """)
             self.sanitaryad = Sanitary()
-            self.heavy.clicked.disconnect(self.popup3)
-            self.heavy.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup4(self):
         choice = QMessageBox.question(self, 'Normal', #question, information, warning, critical
                                      "Do you want to log in that you are \'normal\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
         if choice == QMessageBox.Yes:
             self.normal.setStyleSheet("""
                 QCheckBox#normal::indicator {
@@ -150,15 +155,13 @@ class MyWindow(QWidget):
             quit_msg = "YOU NEED TO BE HAPPY."
             reply = QMessageBox.critical(self, 'Only one answer is valid.',
                              quit_msg)
-            self.normal.clicked.disconnect(self.popup4)
-            self.normal.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup5(self):
         choice = QMessageBox.question(self, 'Happy', #question, information, warning, critical
                                      "Do you want to log in that you are \'happy\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
         if choice == QMessageBox.Yes:
             self.happy.setStyleSheet("""
                 QCheckBox#happy::indicator {
@@ -178,15 +181,13 @@ class MyWindow(QWidget):
             quit_msg = "Great! Keep it up!"
             reply = QMessageBox.information(self, 'You are productive.',
                              quit_msg)
-            self.happy.clicked.disconnect(self.popup5)
-            self.happy.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup6(self):
         choice = QMessageBox.question(self, 'Frisky', #question, information, warning, critical
                                      "Do you want to log in that you are \'frisky\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
         if choice == QMessageBox.Yes:
             self.frisky.setStyleSheet("""
                 QCheckBox#frisky::indicator {
@@ -206,15 +207,13 @@ class MyWindow(QWidget):
             quit_msg = "Great! Good for you!"
             reply = QMessageBox.information(self, 'You are productive.',
                              quit_msg)
-            self.frisky.clicked.disconnect(self.popup6)
-            self.frisky.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup7(self):
         choice = QMessageBox.question(self, 'Mood Swings', #question, information, warning, critical
-                                     "Do you want to log in that you have \'mood swings\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     "Do you want to log in that you are \'mood swings\'?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
         if choice == QMessageBox.Yes:
             self.moodswings.setStyleSheet("""
                 QCheckBox#moodswings::indicator {
@@ -234,15 +233,13 @@ class MyWindow(QWidget):
             quit_msg = "Get yourself under control. YOU NEED TO BE HAPPY."
             reply = QMessageBox.critical(self, 'Only one answer is valid.',
                              quit_msg)
-            self.moodswings.clicked.disconnect(self.popup7)
-            self.moodswings.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup8(self):
         choice = QMessageBox.question(self, 'Angry', #question, information, warning, critical
                                      "Do you want to log in that you are \'angry\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
         if choice == QMessageBox.Yes:
             self.angry.setStyleSheet("""
                 QCheckBox#angry::indicator {
@@ -262,15 +259,13 @@ class MyWindow(QWidget):
             quit_msg = "YOU NEED TO BE HAPPY."
             reply = QMessageBox.critical(self, 'Only one answer is valid.',
                              quit_msg)
-            self.angry.clicked.disconnect(self.popup8)
-            self.angry.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup9(self):
         choice = QMessageBox.question(self, 'Sad', #question, information, warning, critical
                                      "Do you want to log in that you are \'sad\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
         if choice == QMessageBox.Yes:
             self.sad.setStyleSheet("""
                 QCheckBox#sad::indicator {
@@ -290,15 +285,13 @@ class MyWindow(QWidget):
             quit_msg = "YOU NEED TO BE HAPPY."
             reply = QMessageBox.critical(self, 'Only one answer is valid.',
                              quit_msg)
-            self.sad.clicked.disconnect(self.popup9)
-            self.sad.clicked.connect(self.ehwk)
         else:
             pass
 
     def popup10(self):
         choice = QMessageBox.question(self, 'Stress', #question, information, warning, critical
                                      "Do you want to log in that you are \'stressed\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
+                                     QMessageBox.No, QMessageBox.No)
 
         if choice == QMessageBox.Yes:
             self.stress.setStyleSheet("""
@@ -317,176 +310,6 @@ class MyWindow(QWidget):
                 }
             """)
             self.calmatives = Calmative()
-            self.stress.clicked.disconnect(self.popup10)
-            self.stress.clicked.connect(self.ehwk)
-        else:
-            pass
-
-    def popup11(self):
-        choice = QMessageBox.question(self, 'Cramps', #question, information, warning, critical
-                                     "Do you want to log in that you have \'cramps\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
-
-        if choice == QMessageBox.Yes:
-            self.cramps.setStyleSheet("""
-                QCheckBox#cramps::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#cramps::indicator:unchecked {
-                	image: url(img/cramps_sw.png);
-                }
-                QCheckBox#cramps::indicator:unchecked:hover {
-                	image: url(img/cramps_sw.png);
-                }
-                QCheckBox#cramps::indicator:checked {
-                	image: url(img/cramps_sw.png);
-                }
-            """)
-            self.crampsad = Cramps_ad(30, 10, "Advertisement")
-            self.crampsad.show()
-            self.cramps.clicked.disconnect(self.popup11)
-            self.cramps.clicked.connect(self.ehwk)
-        else:
-            pass
-
-    def popup12(self):
-        choice = QMessageBox.question(self, 'Tender Breasts', #question, information, warning, critical
-                                     "Do you want to log in that you have \'tender and hurting breasts\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
-
-        if choice == QMessageBox.Yes:
-            self.tender.setStyleSheet("""
-                QCheckBox#tender::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#tender::indicator:unchecked {
-                	image: url(img/tender_sw.png);
-                }
-                QCheckBox#tender::indicator:unchecked:hover {
-                	image: url(img/tender_sw.png);
-                }
-                QCheckBox#tender::indicator:checked {
-                	image: url(img/tender_sw.png);
-                }
-            """)
-            self.braad = Breastholder_ad(630, 10, "Advertisement")
-            self.braad.show()
-            self.tender.clicked.disconnect(self.popup12)
-            self.tender.clicked.connect(self.ehwk)
-        else:
-            pass
-
-    def popup13(self):
-        choice = QMessageBox.question(self, 'Headache', #question, information, warning, critical
-                                     "Do you want to log in that you have \'headache\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
-
-        if choice == QMessageBox.Yes:
-            self.headache.setStyleSheet("""
-                QCheckBox#headache::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#headache::indicator:unchecked {
-                	image: url(img/Headache_sw.png);
-                }
-                QCheckBox#headache::indicator:unchecked:hover {
-                	image: url(img/Headache_sw.png);
-                }
-                QCheckBox#headache::indicator:checked {
-                	image: url(img/Headache_sw.png);
-                }
-            """)
-            self.head = Headache_ad(10, 10, "Advertisement")
-            self.head.show()
-            self.headache.clicked.disconnect(self.popup13)
-            self.headache.clicked.connect(self.ehwk)
-        else:
-            pass
-
-    def popup14(self):
-        choice = QMessageBox.question(self, 'Fatigue', #question, information, warning, critical
-                                     "Do you want to log in that you are \'fatigued\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
-
-        if choice == QMessageBox.Yes:
-            self.fatigue.setStyleSheet("""
-                QCheckBox#fatigue::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#fatigue::indicator:unchecked {
-                	image: url(img/Fatique_sw.png);
-                }
-                QCheckBox#fatigue::indicator:unchecked:hover {
-                	image: url(img/Fatique_sw.png);
-                }
-                QCheckBox#fatigue::indicator:checked {
-                	image: url(img/Fatique_sw.png);
-                }
-            """)
-            self.fat = Fatigue_ad(710, 60, "Advertisement")
-            self.fat.show()
-            self.fatigue.clicked.disconnect(self.popup14)
-            self.fatigue.clicked.connect(self.ehwk)
-        else:
-            pass
-
-    def popup15(self):
-        choice = QMessageBox.question(self, 'Cravings', #question, information, warning, critical
-                                     "Do you want to log in that you have \'cravings\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
-
-        if choice == QMessageBox.Yes:
-            self.cravings.setStyleSheet("""
-                QCheckBox#cravings::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#cravings::indicator:unchecked {
-                	image: url(img/Cravings_sw.png);
-                }
-                QCheckBox#cravings::indicator:unchecked:hover {
-                	image: url(img/Cravings_sw.png);
-                }
-                QCheckBox#cravings::indicator:checked {
-                	image: url(img/Cravings_sw.png);
-                }
-            """)
-            self.crave = Cravings_ad(480, 100, "Advertisement")
-            self.crave.show()
-            self.cravings.clicked.disconnect(self.popup15)
-            self.cravings.clicked.connect(self.ehwk)
-        else:
-            pass
-
-    def popup16(self):
-        choice = QMessageBox.question(self, 'Bloating', #question, information, warning, critical
-                                     "Do you want to log in that you are \'bloated\'?", QMessageBox.Yes |
-                                     QMessageBox.No)
-
-        if choice == QMessageBox.Yes:
-            self.bloating.setStyleSheet("""
-                QCheckBox#bloating::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#bloating::indicator:unchecked {
-                	image: url(img/Bloating_sw.png);
-                }
-                QCheckBox#bloating::indicator:unchecked:hover {
-                	image: url(img/Bloating_sw.png);
-                }
-                QCheckBox#bloating::indicator:checked {
-                	image: url(img/Bloating_sw.png);
-                }
-            """)
-            self.bloats = Bloating_ad(40, 10, "Advertisement")
-            self.bloats.show()
-            self.bloating.clicked.disconnect(self.popup16)
-            self.bloating.clicked.connect(self.ehwk)
         else:
             pass
 
@@ -507,8 +330,6 @@ class MyWindow(QWidget):
             	image: url(img/weight_sw.png);
             }
         """)
-        self.weight.clicked.disconnect(self.scaleweight)
-        self.weight.clicked.connect(self.ehwk)
 
     def sleephours(self):
         self.sleepy = MySleep()
@@ -527,8 +348,6 @@ class MyWindow(QWidget):
             	image: url(img/sleep_sw.png);
             }
         """)
-        self.sleep.clicked.disconnect(self.sleephours)
-        self.sleep.clicked.connect(self.ehwk)
 
     def pedymeter(self):
         self.pedy = MyPedometer()
@@ -547,11 +366,9 @@ class MyWindow(QWidget):
             	image: url(img/steps_sw.png);
             }
         """)
-        self.steps.clicked.disconnect(self.pedymeter)
-        self.steps.clicked.connect(self.ehwk)
 
     def travelling(self):
-        self.travels = Travelbox()
+        self.travelling = Travelbox()
         self.travel.setStyleSheet("""
             QCheckBox#travel::indicator {
             	width: 60px;
@@ -567,8 +384,6 @@ class MyWindow(QWidget):
             	image: url(img/Travel_sw.png);
             }
         """)
-        self.travel.clicked.disconnect(self.travelling)
-        self.travel.clicked.connect(self.ehwk)
 
     def illness(self):
         self.diseaseinj = Diseasebox()
@@ -587,8 +402,6 @@ class MyWindow(QWidget):
             	image: url(img/disease_sw.png);
             }
         """)
-        self.disease.clicked.disconnect(self.illness)
-        self.disease.clicked.connect(self.ehwk)
 
 
     def skymoji1(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
@@ -612,8 +425,6 @@ class MyWindow(QWidget):
             	image: url(img/no_sex_sw.png);
             }
         """)
-        self.nosex.clicked.disconnect(self.skymoji1)
-        self.nosex.clicked.connect(self.ehwk)
 
     def skymoji2(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
         filepath = "img/sun_anim@2x.png"
@@ -636,8 +447,6 @@ class MyWindow(QWidget):
             	image: url(img/protected_sex_sw.png);
             }
         """)
-        self.protected.clicked.disconnect(self.skymoji2)
-        self.protected.clicked.connect(self.ehwk)
 
     def skymoji3(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
         filepath = "img/shake_anim@2x.png"
@@ -660,8 +469,6 @@ class MyWindow(QWidget):
             	image: url(img/unprotected_sex_sw.png);
             }
         """)
-        self.unprotected.clicked.disconnect(self.skymoji3)
-        self.unprotected.clicked.connect(self.ehwk)
 
     def skymoji4(self): #inappropiate reacton of the app evokes regret of the user's submission of private information
         filepath = "img/smirk_anim@2x.png"
@@ -684,8 +491,6 @@ class MyWindow(QWidget):
             	image: url(img/high_sex_sw.png);
             }
         """)
-        self.high.clicked.disconnect(self.skymoji4)
-        self.high.clicked.connect(self.ehwk)
 
     def ironman_ad(self):
         self.ironman = Ironman()
@@ -704,56 +509,6 @@ class MyWindow(QWidget):
             	image: url(img/Masturbation_sw.png);
             }
         """)
-        self.masturbation.clicked.disconnect(self.ironman_ad)
-        self.masturbation.clicked.connect(self.ehwk)
-
-    def alcoholinf(self):
-        self.alc_info = Alcohol()
-        self.alcohol.setStyleSheet("""
-            QCheckBox#alcohol::indicator {
-            	width: 60px;
-            	height: 60px;
-            }
-            QCheckBox#alcohol::indicator:unchecked {
-            	image: url(img/alcohol_sw.png);
-            }
-            QCheckBox#alcohol::indicator:unchecked:hover {
-            	image: url(img/alcohol_sw.png);
-            }
-            QCheckBox#alcohol::indicator:checked {
-            	image: url(img/alcohol_sw.png);
-            }
-        """)
-        self.alcohol.clicked.disconnect(self.alcoholinf)
-        self.alcohol.clicked.connect(self.ehwk)
-
-    def imfine(self):
-        choice = QMessageBox.question(self, 'Fine', #question, information, warning, critical
-                                     "Do you want to log in that you are \'fine\' and got no symptoms?", QMessageBox.Yes |
-                                     QMessageBox.No, QMessageBox.No)
-        if choice == QMessageBox.Yes:
-            self.fine.setStyleSheet("""
-                QCheckBox#fine::indicator {
-                	width: 60px;
-                	height: 60px;
-                }
-                QCheckBox#fine::indicator:unchecked {
-                	image: url(img/fine_sw.png);
-                }
-                QCheckBox#fine::indicator:unchecked:hover {
-                	image: url(img/fine_sw.png);
-                }
-                QCheckBox#fine::indicator:checked {
-                	image: url(img/fine_sw.png);
-                }
-            """)
-            quit_msg = "Great! Good for you!"
-            reply = QMessageBox.information(self, 'You are productive.',
-                             quit_msg)
-            self.fine.clicked.disconnect(self.imfine)
-            self.fine.clicked.connect(self.ehwk)
-        else:
-            pass
 
 #    def mediaplayer(self):
 #        self.mediaplayer = QMediaPlayer(self)
@@ -1176,11 +931,10 @@ class MyWindow(QWidget):
             	image: url(img/fine_h.png);
             }
             QCheckBox#fine::indicator:checked {
-            	image: url(img/fine.png);
+            	image: url(img/fine_sw.png);
             }
         """)
         self.fine.move(20, 480)
-        self.fine.clicked.connect(self.imfine)
 
         self.cramps = QCheckBox(self)
         self.cramps.resize(90, 90)
@@ -1197,11 +951,10 @@ class MyWindow(QWidget):
             	image: url(img/cramps_h.png);
             }
             QCheckBox#cramps::indicator:checked {
-            	image: url(img/cramps.png);
+            	image: url(img/cramps_sw.png);
             }
         """)
         self.cramps.move(90, 480)
-        self.cramps.clicked.connect(self.popup11)
 
         self.tender = QCheckBox(self)
         self.tender.resize(90, 90)
@@ -1218,11 +971,10 @@ class MyWindow(QWidget):
             	image: url(img/tender_h.png);
             }
             QCheckBox#tender::indicator:checked {
-            	image: url(img/tender.png);
+            	image: url(img/tender_sw.png);
             }
         """)
         self.tender.move(160, 480)
-        self.tender.clicked.connect(self.popup12)
 
         self.headache = QCheckBox(self)
         self.headache.resize(90, 90)
@@ -1239,11 +991,10 @@ class MyWindow(QWidget):
             	image: url(img/Headache_h.png);
             }
             QCheckBox#headache::indicator:checked {
-            	image: url(img/Headache.png);
+            	image: url(img/Headache_sw.png);
             }
         """)
         self.headache.move(230, 480)
-        self.headache.clicked.connect(self.popup13)
 
         self.fatigue = QCheckBox(self)
         self.fatigue.resize(90, 90)
@@ -1260,11 +1011,10 @@ class MyWindow(QWidget):
             	image: url(img/Fatique_h.png);
             }
             QCheckBox#fatigue::indicator:checked {
-            	image: url(img/Fatique.png);
+            	image: url(img/Fatique_sw.png);
             }
         """)
         self.fatigue.move(300, 480)
-        self.fatigue.clicked.connect(self.popup14)
 
         self.bloating = QCheckBox(self)
         self.bloating.resize(90, 90)
@@ -1281,11 +1031,10 @@ class MyWindow(QWidget):
             	image: url(img/Bloating_h.png);
             }
             QCheckBox#bloating::indicator:checked {
-            	image: url(img/Bloating.png);
+            	image: url(img/Bloating_sw.png);
             }
         """)
         self.bloating.move(370, 480)
-        self.bloating.clicked.connect(self.popup16)
 
         self.cravings = QCheckBox(self)
         self.cravings.resize(90, 90)
@@ -1302,11 +1051,10 @@ class MyWindow(QWidget):
             	image: url(img/Cravings_h.png);
             }
             QCheckBox#cravings::indicator:checked {
-            	image: url(img/Cravings.png);
+            	image: url(img/Cravings_sw.png);
             }
         """)
         self.cravings.move(440, 480)
-        self.cravings.clicked.connect(self.popup15)
 
         self.travel = QCheckBox(self)
         self.travel.resize(90, 90)
@@ -1369,7 +1117,6 @@ class MyWindow(QWidget):
             }
         """)
         self.alcohol.move(160, 580)
-        self.alcohol.clicked.connect(self.alcoholinf)
 
         self.disease = QCheckBox(self)
         self.disease.resize(90, 90)
